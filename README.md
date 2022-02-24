@@ -19,6 +19,11 @@ The user stories are ordered by descending priority 📉 (you should do 1. befor
 6. As an instructor I want to be able to modify a student from my crew ✏
 7. As an instructor I want to be able to see the list of already drawn students 👀
 8. As an instructor I want the random draw function to draw only from the students that have not spoken yet to enable each student to speak once before we draw again from the whole group 🤓
+9. As an inclusive instructor I want my web page to be [RGAA compliant](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/) 👨‍🦽
+10. As an instructor I want see two stats regarding speeches : the shortest interval between two speeches of the same person / the longest interval between two speeches of the same person 📈
+11. As an instructor I want the draw function to display remaining names with a "spinning wheel" effect 🎡
+
+![Spinning Wheel](mockups/spinning-wheel.gif)
 
 ## Mockups
 
