@@ -36,3 +36,14 @@ The user stories are ordered by descending priority 📉 (you should do 1. befor
 - You have to use HTML and CSS for the page architecture and layout 🏗
 - You can use JS (if you already know a bit) to add dynamism to the page ⚡
 - You can use php, Java or any backend language to save data and handle the drawing part. Or you can use JS in the browser and it would mean that you already know some of the basics we will see next weeks 🤓
+
+## Presentation
+
+When you have you app ready, you will present it to the crew 😎.
+
+1. [2 minutes max] You will present how your app is working [demo]
+2. [10 minutes max] You will show how you coded the features [code review]
+   1. HTML structure
+   2. CSS rules
+   3. App logic (back-end / front-end)
+3. [3 minutes max] You will explain how you put your app to production (if done) [industrialization]
