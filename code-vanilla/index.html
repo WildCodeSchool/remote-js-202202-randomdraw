@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Student random draw</title>
+</head>
+
+<body>
+    <header id="main-header">
+        <h1>Student Random Draw 🔮</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Draw a student! 🔮</h2>
+            <button id="btn-draw">Draw!</button>
+            <p id="p-random-drawn"></p>
+        </section>
+        <section>
+            <h2>The crew 👨‍🎓</h2>
+            <form id="form-student">
+                <input type="hidden" name="row-number" id="row-number" value="">
+
+                <div class="form-field">
+                    <label for="first-name">First name</label>
+                    <input type="text" name="first-name" id="first-name" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="last-name">Last name</label>
+                    <input type="text" name="last-name" id="last-name" required>
+                </div>
+                <button type="submit">Save 💾</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last Name</th>
+                        <th>Speeches count</th>
+                        <th>Edit</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-students">
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>List of speeches 📣</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-speeches">
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer id="main-footer">
+        <ul class="no-bullets">
+            <li>Developper: Jules Grand</li>
+        </ul>
+    </footer>
+
+    <script src="main.js" type="module"></script>
+</body>
+
+</html>
