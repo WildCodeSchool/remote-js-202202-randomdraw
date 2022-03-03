@@ -4,3 +4,13 @@ export function drawRandomElementFromArray(array) {
     else
         return null;
 }
+
+export function getMaxIdFromArray(array, key) {
+    let maxId = 0;
+    for (let element of array) {
+        if (element[key] > maxId) {
+            maxId = element[key];
+        }
+    }
+    return maxId;
+}

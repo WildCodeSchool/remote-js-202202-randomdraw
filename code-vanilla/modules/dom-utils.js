@@ -22,6 +22,7 @@ export function createStudentLine(student) {
     colDeleteBtn.append(deleteBtn);
 
     const studentLine = document.createElement('tr');
+    studentLine.setAttribute('data-id', student.id);
     studentLine.append(colFirstName);
     studentLine.append(colLastName);
     studentLine.append(colSpeechesCount);
@@ -37,7 +38,7 @@ export function createSpeechLine(student, date) {
     colFirstName.textContent = student.firstName;
     const colLastName = document.createElement('td');
     colLastName.textContent = student.lastName;
-    
+
     const colSpeechesDate = document.createElement('td');
     colSpeechesDate.textContent = date.toLocaleDateString();
     const colSpeechesTime = document.createElement('td');
@@ -50,4 +51,16 @@ export function createSpeechLine(student, date) {
     speechLine.append(colSpeechesTime);
 
     document.getElementById('tbody-speeches').prepend(speechLine);
+}
+
+export function displayStudentsList(studentList) {
+    const tableBody = document.getElementById('tbody-students');
+    tableBody.innerHTML = "";
+    // while (tableBody.rows.length > 0) {
+    //     tableBody.deleteRow(-1);
+    // }
+
+    for (let student of studentList) {
+        createStudentLine(student);
+    }
 }
