@@ -5,7 +5,7 @@ export function createStudentLine(student) {
     const colLastName = document.createElement('td');
     colLastName.textContent = student.lastName;
     const colSpeechesCount = document.createElement('td');
-    colSpeechesCount.textContent = 0;
+    colSpeechesCount.textContent = student.speeches.length;
 
     const colEditBtn = document.createElement('td');
     const editBtn = document.createElement('button');

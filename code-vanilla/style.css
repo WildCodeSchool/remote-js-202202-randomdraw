@@ -27,6 +27,15 @@ button {
     margin       : auto;
 }
 
+button:hover {
+    background-color: #5657be;
+    box-shadow: 0 0 0.5rem grey;
+}
+
+button:disabled {
+    background-color: grey;
+}
+
 table {
     border         : solid 0.2rem;
     border-collapse: collapse;
@@ -79,6 +88,11 @@ section>h2 {
 
 main {
     flex: 1;
+}
+
+#p-random-drawn {
+    text-align: center;
+    font-size: 2rem;
 }
 
 .form-field {

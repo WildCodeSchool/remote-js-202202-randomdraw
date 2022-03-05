@@ -21,13 +21,39 @@ const students = [
 // Afficher ma liste d'étudiants de départ dans le tableau
 displayStudentsList(students);
 
+// Fonction permettant le tirage au sort ludique
+function spinningWheel(studentList) {
+    const promiseList = [];
+    for (let i = 0; i < studentList.length; i++) {
+        const promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const randomStudent = drawRandomElementFromArray(studentList);
+                document.getElementById('p-random-drawn').textContent = randomStudent.firstName + " " + randomStudent.lastName;
+                resolve(randomStudent);
+            }, i * i * 20);
+        });
+        promiseList.push(promise);
+    }
+
+    return promiseList;
+}
+
 // Gestion du tirage au sort
 // Gérer l'événement sur le bouton draw
 document.getElementById('btn-draw').addEventListener('click', function () {
-    const randomStudent = drawRandomElementFromArray(students);
-    document.getElementById('p-random-drawn').textContent = randomStudent.firstName + " " + randomStudent.lastName;
+    // On trouve le plus petit nombre de speech et on filtre le tableau à tirer au sort
+    const smallestSpeechCount = students.reduce((smallestCount, currentStudent) => (currentStudent.speeches.length < smallestCount) ? currentStudent.speeches.length : smallestCount, Number.POSITIVE_INFINITY);
+    const remainingStudentsToTalk = students.filter(student => student.speeches.length === smallestSpeechCount);
 
-    createSpeechLine(randomStudent, new Date());
+    document.getElementById('btn-draw').setAttribute('disabled', true);
+    const promiseList = spinningWheel(remainingStudentsToTalk);
+    Promise.all(promiseList).then(values => {
+        const lastDrawnStudent = values[values.length - 1];
+        lastDrawnStudent.speech();
+        createSpeechLine(lastDrawnStudent, lastDrawnStudent.speeches[lastDrawnStudent.speeches.length - 1]);
+        console.log(lastDrawnStudent);
+        displayStudentsList(students);
+    }).finally(() => document.getElementById('btn-draw').removeAttribute('disabled'));
 });
 
 // Gestion du formulaire ==> submit
@@ -64,7 +90,6 @@ document.getElementById('tbody-students').addEventListener('click', function (ev
     if (event.target && event.target.matches('.btn-edit')) {
         const row = event.target.closest('tr');
         const studentId = row.dataset.id;
-        console.log(studentId);
 
         const editedStudent = students.find(function (student) {
             return student.id == studentId;
@@ -77,16 +102,15 @@ document.getElementById('tbody-students').addEventListener('click', function (ev
         document.getElementById('student-id').value = editedStudent.id;
     } else if (event.target && event.target.matches('.btn-delete')) {
         const row = event.target.closest('tr');
+        const studentId = row.dataset.id;
+
         row.remove();
-        students.splice(row.rowIndex - 1, 1);
+        students.splice(students.findIndex(student => student.id == studentId), 1);
     }
 });
 
 /*
- TODOs :
-    - Protéger le formulaire contre l'ajout d'un étudiant "vide" (sans prénom, ni nom), même si les champs sont required
-    - Gérer l'incrémentation de la colonne speech count
-    - Gérer la logique de tirage au sort (tirer tout le monde au sort avec de retirer dans toute la liste) (US 8)
-    - Gérer la logique "roue de la fortune" (US 11)
-    - Ajouter les statistiques (US 10)
+ TODOs possibles :
+    - Mettre en place le stockage local (localstorage)
+    - Traiter l'US 11 (statistiques de temps de parole)
 */
